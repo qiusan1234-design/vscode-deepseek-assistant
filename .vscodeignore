@@ -1,0 +1,10 @@
+.vscode/**
+!.vscode/launch.json
+!.vscode/tasks.json
+src/**
+node_modules/
+out/**/*.map
+.gitignore
+tsconfig.json
+**/*.ts
+!out/extension.js

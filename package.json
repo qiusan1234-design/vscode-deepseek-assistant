@@ -1,0 +1,195 @@
+{
+  "name": "vscode-deepseek-assistant",
+  "displayName": "DeepSeek Assistant",
+  "version": "1.0.0",
+  "description": "DeepSeek AI-powered coding assistant for VSCode - Chat, Code Explanation, Refactoring, Bug Fixing, Unit Tests, and more",
+  "categories": [
+    "Machine Learning",
+    "Programming Languages",
+    "Other"
+  ],
+  "keywords": [
+    "deepseek",
+    "ai",
+    "llm",
+    "copilot",
+    "assistant",
+    "chat",
+    "refactor",
+    "code generation",
+    "unit test"
+  ],
+  "icon": "icon.png",
+  "publisher": "deepseek-assistant",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/qiusan1234-design/vscode-deepseek-assistant"
+  },
+  "bugs": {
+    "url": "https://github.com/qiusan1234-design/vscode-deepseek-assistant/issues"
+  },
+  "homepage": "https://github.com/qiusan1234-design/vscode-deepseek-assistant#readme",
+  "engines": {
+    "vscode": "^1.82.0"
+  },
+  "activationEvents": [
+    "onView:deepseekChatPanel",
+    "onCommand:deepseek.explainCode",
+    "onCommand:deepseek.refactorCode",
+    "onCommand:deepseek.fixBug",
+    "onCommand:deepseek.generateComments",
+    "onCommand:deepseek.generateTests",
+    "onCommand:deepseek.generateCommitMessage",
+    "onCommand:deepseek.openChat"
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "viewsContainers": {
+      "activitybar": [
+        {
+          "id": "deepseek-assistant",
+          "title": "DeepSeek Assistant",
+          "icon": "media/deepseek-icon.svg"
+        }
+      ]
+    },
+    "views": {
+      "deepseek-assistant": [
+        {
+          "type": "webview",
+          "id": "deepseekChatPanel",
+          "name": "Chat"
+        }
+      ]
+    },
+    "commands": [
+      {
+        "command": "deepseek.explainCode",
+        "title": "DeepSeek: Explain Selected Code"
+      },
+      {
+        "command": "deepseek.refactorCode",
+        "title": "DeepSeek: Refactor Selected Code"
+      },
+      {
+        "command": "deepseek.fixBug",
+        "title": "DeepSeek: Find & Fix Bugs"
+      },
+      {
+        "command": "deepseek.generateComments",
+        "title": "DeepSeek: Generate Comments"
+      },
+      {
+        "command": "deepseek.generateTests",
+        "title": "DeepSeek: Generate Unit Tests"
+      },
+      {
+        "command": "deepseek.generateCommitMessage",
+        "title": "DeepSeek: Generate Git Commit Message"
+      },
+      {
+        "command": "deepseek.openChat",
+        "title": "DeepSeek: Open Chat Panel"
+      }
+    ],
+    "menus": {
+      "editor/context": [
+        {
+          "command": "deepseek.explainCode",
+          "when": "editorHasSelection",
+          "group": "deepseek@1"
+        },
+        {
+          "command": "deepseek.refactorCode",
+          "when": "editorHasSelection",
+          "group": "deepseek@2"
+        },
+        {
+          "command": "deepseek.fixBug",
+          "when": "editorHasSelection",
+          "group": "deepseek@3"
+        },
+        {
+          "command": "deepseek.generateComments",
+          "when": "editorHasSelection",
+          "group": "deepseek@4"
+        },
+        {
+          "command": "deepseek.generateTests",
+          "when": "editorHasSelection",
+          "group": "deepseek@5"
+        }
+      ],
+      "scm/title": [
+        {
+          "command": "deepseek.generateCommitMessage",
+          "group": "navigation"
+        }
+      ]
+    },
+    "keybindings": [
+      {
+        "command": "deepseek.explainCode",
+        "key": "ctrl+shift+d ctrl+e",
+        "when": "editorHasSelection"
+      },
+      {
+        "command": "deepseek.openChat",
+        "key": "ctrl+shift+d ctrl+c",
+        "when": "editorTextFocus"
+      }
+    ],
+    "configuration": {
+      "title": "DeepSeek Assistant",
+      "properties": {
+        "deepseek.apiKey": {
+          "type": "string",
+          "default": "",
+          "description": "DeepSeek API Key (https://platform.deepseek.com/api_keys)"
+        },
+        "deepseek.baseUrl": {
+          "type": "string",
+          "default": "https://api.deepseek.com",
+          "description": "Custom API endpoint URL (supports private deployments / proxies)"
+        },
+        "deepseek.defaultModel": {
+          "type": "string",
+          "default": "deepseek-chat",
+          "enum": [
+            "deepseek-chat",
+            "deepseek-reasoner",
+            "deepseek-coder"
+          ],
+          "description": "Default DeepSeek model to use"
+        },
+        "deepseek.maxTokens": {
+          "type": "number",
+          "default": 4096,
+          "description": "Maximum tokens in the response"
+        },
+        "deepseek.temperature": {
+          "type": "number",
+          "default": 0.7,
+          "minimum": 0,
+          "maximum": 2,
+          "description": "Sampling temperature (0-2)"
+        }
+      }
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "lint": "eslint src --ext ts",
+    "package": "vsce package",
+    "publish": "vsce publish"
+  },
+  "devDependencies": {
+    "@types/node": "^25.9.1",
+    "@types/vscode": "^1.82.0",
+    "@vscode/vsce": "^2.22.0",
+    "typescript": "^5.3.0"
+  }
+}
