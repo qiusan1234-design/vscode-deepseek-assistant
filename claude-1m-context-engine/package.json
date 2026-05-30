@@ -1,0 +1,68 @@
+{
+  "name": "claude-1m-context-engine",
+  "version": "1.0.0",
+  "description": "Ultra-long 1M token context knowledge engine powered by Claude API — no chunking, full-document understanding",
+  "keywords": [
+    "claude",
+    "anthropic",
+    "llm",
+    "knowledge-base",
+    "context-engine",
+    "1m-context",
+    "rag",
+    "local-first",
+    "privacy",
+    "vscode-extension",
+    "chinese-nlp",
+    "document-qa"
+  ],
+  "author": "qiusan1234-design",
+  "license": "Apache-2.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/qiusan1234-design/claude-1m-context-engine"
+  },
+  "bugs": {
+    "url": "https://github.com/qiusan1234-design/claude-1m-context-engine/issues"
+  },
+  "homepage": "https://github.com/qiusan1234-design/claude-1m-context-engine#readme",
+  "private": true,
+  "workspaces": [
+    "packages/core",
+    "packages/server",
+    "packages/cli",
+    "packages/vscode"
+  ],
+  "scripts": {
+    "build": "npm run build --workspaces",
+    "build:core": "npm run build -w packages/core",
+    "build:server": "npm run build -w packages/server",
+    "build:cli": "npm run build -w packages/cli",
+    "build:vscode": "npm run build -w packages/vscode",
+    "dev:server": "npm run dev -w packages/server",
+    "dev:cli": "npm run dev -w packages/cli",
+    "test": "jest --config jest.config.js",
+    "test:unit": "jest tests/unit",
+    "test:integration": "jest tests/integration",
+    "lint": "eslint packages --ext .ts",
+    "format": "prettier --write 'packages/**/*.ts' 'tests/**/*.ts'",
+    "clean": "rimraf packages/*/dist packages/*/out",
+    "release": "bash scripts/release.sh",
+    "deploy": "bash deploy.sh",
+    "postinstall": "npm run build:core"
+  },
+  "devDependencies": {
+    "@types/jest": "^29.5.14",
+    "@types/node": "^22.13.0",
+    "eslint": "^9.18.0",
+    "jest": "^29.7.0",
+    "prettier": "^3.4.2",
+    "rimraf": "^6.0.1",
+    "ts-jest": "^29.2.5",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.7.3"
+  },
+  "engines": {
+    "node": ">=20.0.0"
+  }
+}

@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#1a1a2e"/>
+      <stop offset="100%" style="stop-color:#16213e"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#d4a574"/>
+      <stop offset="100%" style="stop-color:#f0c27a"/>
+    </linearGradient>
+  </defs>
+  <rect width="128" height="128" rx="20" fill="url(#bg)"/>
+  <!-- Document icon -->
+  <rect x="28" y="20" width="72" height="88" rx="6" fill="#2d2d5e" stroke="url(#accent)" stroke-width="2"/>
+  <!-- Text lines -->
+  <rect x="38" y="44" width="52" height="6" rx="3" fill="url(#accent)" opacity="0.9"/>
+  <rect x="38" y="58" width="42" height="4" rx="2" fill="url(#accent)" opacity="0.6"/>
+  <rect x="38" y="68" width="48" height="4" rx="2" fill="url(#accent)" opacity="0.6"/>
+  <rect x="38" y="78" width="36" height="4" rx="2" fill="url(#accent)" opacity="0.6"/>
+  <!-- 1M badge -->
+  <rect x="70" y="12" width="44" height="18" rx="9" fill="#e94560"/>
+  <text x="92" y="25" font-family="Arial,sans-serif" font-size="11" font-weight="bold" fill="#fff" text-anchor="middle">1M</text>
+  <!-- Checkmark -->
+  <circle cx="96" cy="98" r="14" fill="#4ecca3"/>
+  <polyline points="88,98 93,104 104,92" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

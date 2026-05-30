@@ -1,0 +1,28 @@
+{
+  "name": "@claude-1m/cli",
+  "version": "1.0.0",
+  "description": "CLI tool for Claude 1M Context Engine",
+  "main": "dist/index.js",
+  "bin": {
+    "c1m": "dist/index.js"
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "dev": "ts-node src/index.ts",
+    "clean": "rimraf dist"
+  },
+  "dependencies": {
+    "@claude-1m/core": "*",
+    "chalk": "^5.4.1",
+    "commander": "^13.1.0",
+    "dotenv": "^16.4.7",
+    "ora": "^8.2.0",
+    "table": "^6.9.0",
+    "terminal-link": "^4.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.13.0",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.7.3"
+  }
+}

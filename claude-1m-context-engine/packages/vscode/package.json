@@ -1,0 +1,143 @@
+{
+  "name": "claude-1m-context-engine-vscode",
+  "displayName": "Claude 1M Context Engine",
+  "version": "1.0.0",
+  "description": "Ultra-long context knowledge base powered by Claude — no chunking, full-document understanding",
+  "publisher": "qiusan1234-design",
+  "license": "Apache-2.0",
+  "icon": "media/icon.png",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/qiusan1234-design/claude-1m-context-engine"
+  },
+  "bugs": {
+    "url": "https://github.com/qiusan1234-design/claude-1m-context-engine/issues"
+  },
+  "homepage": "https://github.com/qiusan1234-design/claude-1m-context-engine#readme",
+  "engines": {
+    "vscode": "^1.85.0"
+  },
+  "categories": [
+    "Machine Learning",
+    "Other",
+    "Chat"
+  ],
+  "keywords": [
+    "claude",
+    "anthropic",
+    "knowledge-base",
+    "context",
+    "1m-tokens",
+    "document-qa",
+    "chinese"
+  ],
+  "activationEvents": [
+    "onStartupFinished"
+  ],
+  "main": "./dist/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "c1m.ingestFile",
+        "title": "C1M: Ingest Current File"
+      },
+      {
+        "command": "c1m.ingestDirectory",
+        "title": "C1M: Ingest Directory"
+      },
+      {
+        "command": "c1m.query",
+        "title": "C1M: Query Knowledge Base"
+      },
+      {
+        "command": "c1m.createTree",
+        "title": "C1M: Create Context Tree"
+      },
+      {
+        "command": "c1m.addToTree",
+        "title": "C1M: Add Current File to Tree"
+      },
+      {
+        "command": "c1m.showContextPanel",
+        "title": "C1M: Show Context Panel"
+      },
+      {
+        "command": "c1m.clearMemory",
+        "title": "C1M: Clear Memory"
+      },
+      {
+        "command": "c1m.showStats",
+        "title": "C1M: Show Engine Statistics"
+      },
+      {
+        "command": "c1m.startServer",
+        "title": "C1M: Start Local Server"
+      },
+      {
+        "command": "c1m.stopServer",
+        "title": "C1M: Stop Local Server"
+      }
+    ],
+    "viewsContainers": {
+      "activitybar": [
+        {
+          "id": "c1m-context-panel",
+          "title": "Claude 1M Context",
+          "icon": "media/icon.svg"
+        }
+      ]
+    },
+    "views": {
+      "c1m-context-panel": [
+        {
+          "id": "c1m.contextTree",
+          "name": "Context Tree"
+        },
+        {
+          "id": "c1m.memorySlots",
+          "name": "Memory Slots"
+        }
+      ]
+    },
+    "configuration": {
+      "title": "Claude 1M Context Engine",
+      "properties": {
+        "c1m.apiKey": {
+          "type": "string",
+          "default": "",
+          "description": "Anthropic API key"
+        },
+        "c1m.serverPort": {
+          "type": "number",
+          "default": 3721,
+          "description": "Local server port"
+        },
+        "c1m.autoIngestOnSave": {
+          "type": "boolean",
+          "default": false,
+          "description": "Auto-ingest files on save"
+        },
+        "c1m.maxContextTokens": {
+          "type": "number",
+          "default": 900000,
+          "description": "Maximum context tokens to use"
+        }
+      }
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run build",
+    "build": "node esbuild.mjs",
+    "watch": "node esbuild.mjs --watch",
+    "clean": "rimraf dist"
+  },
+  "dependencies": {
+    "@claude-1m/core": "*"
+  },
+  "devDependencies": {
+    "@types/vscode": "^1.85.0",
+    "@types/node": "^22.13.0",
+    "esbuild": "^0.25.0",
+    "typescript": "^5.7.3"
+  }
+}

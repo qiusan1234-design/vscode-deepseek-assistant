@@ -1,0 +1,29 @@
+version: "3.9"
+
+services:
+  c1m-engine:
+    build: .
+    container_name: claude-1m-context-engine
+    ports:
+      - "3721:3721"
+    environment:
+      - ANTHROPIC_API_KEY=${ANTHROPIC_API_KEY}
+      - CLAUDE_MODEL=${CLAUDE_MODEL:-claude-sonnet-4-6}
+      - MAX_CONTEXT_TOKENS=${MAX_CONTEXT_TOKENS:-900000}
+      - PORT=3721
+      - HOST=0.0.0.0
+      - CACHE_DIR=/app/data/cache
+      - VECTOR_CACHE_DIR=/app/data/vector-cache
+      - LOCAL_API_TOKEN=${LOCAL_API_TOKEN:-}
+    volumes:
+      - c1m-data:/app/data
+      - ./docs:/app/docs:ro
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "wget", "-q", "--spider", "http://localhost:3721/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+volumes:
+  c1m-data:
